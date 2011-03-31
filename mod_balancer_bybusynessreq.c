@@ -47,10 +47,11 @@ static int request_to_backend(proxy_worker *worker, server_rec *rec)
   curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &code);
   curl_easy_cleanup(curl);
 
-  AP_LOG_INFO(rec, "checking backend server:'%s'=> %d, %d(%s)", worker->name, code, ret, curl_easy_strerror(ret));
+  AP_LOG_DEBUG(rec, "checking backend server:'%s'=> %d, %d(%s)", worker->name, code, ret, curl_easy_strerror(ret));
   worker->s->error_time = apr_time_now();
 
-  return (code==200)? OK: DECLINED;
+  if((200<=code) && (code<400)) return OK;
+  return DECLINED;
 }
 
 
