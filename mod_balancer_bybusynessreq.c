@@ -50,7 +50,7 @@ static int request_to_backend(proxy_worker *worker, server_rec *rec)
   AP_LOG_DEBUG(rec, "checking backend server:'%s'=> %d, %d(%s)", worker->name, code, ret, curl_easy_strerror(ret));
   worker->s->error_time = apr_time_now();
 
-  if((200<=code) && (code<400)) return OK;
+  if((100<=code) && (code<500)) return OK;
   return DECLINED;
 }
 

@@ -4,6 +4,7 @@ Description:
   ロードバランサ "bybusyness" の拡張版です。
   バックエンドにエラーが発生したとき、リトライ前に / へ HEAD リクエストします。
   これに成功した場合にのみバックエンドを復帰させます。
+  レスポンスコードが 1xx, 2xx, 3xx, 4xx の場合に成功とみなします。
 
 
 To build and install on Linux (CentOS).
