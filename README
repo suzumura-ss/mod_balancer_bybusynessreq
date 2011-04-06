@@ -16,6 +16,7 @@ To enable the module:
 
   <Proxy balancer://www>
     ProxySet lbmethod=bybusynessreq
+    bybusynessreq-timeout 5   # Connection and response timeout. Default is 5sec.
   </Proxy>
 
 
